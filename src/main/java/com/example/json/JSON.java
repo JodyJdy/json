@@ -61,7 +61,7 @@ public class JSON {
      * @param json      可以是普通json{},也可以是json数组[]，也可以是值, true,false....
      * @param classType T 类型中含有泛型时，使用ClassType传入泛型类型
      */
-    public static <T> T getObj(Class<T> clazz, String json, ClassType<T> classType) {
+    public static <T> T getObj(Class<T> clazz, String json, ClassType classType) {
         return Json2Obj.getObj(clazz, getJsonParser(json).parseValue(), classType);
     }
 
@@ -69,7 +69,7 @@ public class JSON {
         return Json2Obj.getObj(clazz, getJsonParser(json).parseValue());
     }
 
-    public static <T> T getObj(Class<T> clazz, JsonParser jsonParser, ClassType<T> classType) {
+    public static <T> T getObj(Class<T> clazz, JsonParser jsonParser, ClassType classType) {
         return Json2Obj.getObj(clazz, jsonParser.parseValue(), classType);
     }
 
@@ -103,7 +103,7 @@ public class JSON {
      * @param json         json数组, []
      * @param contentType  list元素 对应的ClassType
      */
-    public static <T> List<T> getObjList(String json, Class<T> contentClazz, ClassType<T> contentType) {
+    public static <T> List<T> getObjList(String json, Class<T> contentClazz, ClassType contentType) {
         return Json2Obj.getObjList(getJsonParser(json).parseJsonArray(), contentClazz, contentType);
     }
 
@@ -111,7 +111,7 @@ public class JSON {
         return Json2Obj.getObjList(getJsonParser(json).parseJsonArray(), contentClazz);
     }
 
-    public static <T> List<T> getObjList(JsonParser jsonParser, Class<T> contentClazz, ClassType<T> contentType) {
+    public static <T> List<T> getObjList(JsonParser jsonParser, Class<T> contentClazz, ClassType contentType) {
         return Json2Obj.getObjList(jsonParser.parseJsonArray(), contentClazz, contentType);
     }
 
