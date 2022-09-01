@@ -1,16 +1,19 @@
 package com.example.json.mapper;
 
-import com.example.json.parser.Value;
-import com.example.json.type.FieldType;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 /**
  *  用于映射对象到字符串
+ *  "hello "
  */
 public interface Mapper extends Comparable<Mapper>{
 
     int getOrder();
 
-    Object resolveValue(FieldType fieldType, Value value);
+    boolean doMap(Field field);
+
+    void map2Json(Field field, Object value, Map<String,String> resultJson);
 
     @Override
     default int compareTo(Mapper o) {

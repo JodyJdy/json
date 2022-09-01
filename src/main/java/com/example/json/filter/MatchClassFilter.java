@@ -10,7 +10,7 @@ public abstract class MatchClassFilter implements Filter {
 
     public MatchClassFilter(Class<?>... targets) {
         this.targets = targets;
-        for (Class c : targets) {
+        for (Class<?> c : targets) {
             hashCodes.add(c.hashCode());
         }
     }

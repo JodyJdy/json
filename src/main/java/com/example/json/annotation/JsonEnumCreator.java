@@ -13,6 +13,8 @@ import java.lang.annotation.Target;
 public @interface JsonEnumCreator {
     /**
      *  方法参数对应的 json 键的名称，数量，顺序要完全对应
+     *
+     *  序列化时也会使用配置的jsonFieldNames
      */
     String[] jsonFieldNames()default{};
 }
