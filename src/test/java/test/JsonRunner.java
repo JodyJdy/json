@@ -1,4 +1,4 @@
-package com.example.json;
+package test;
 
 import com.example.json.json2obj.Json2Obj;
 import com.example.json.parser.Json;

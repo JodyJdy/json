@@ -1,4 +1,4 @@
-package com.example.json.example;
+package example;
 
 public class Human <T>{
     T t;
