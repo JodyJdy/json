@@ -1,5 +1,7 @@
 package com.example.json.mapper;
 
+import com.example.json.parser.Json;
+
 import java.lang.reflect.Field;
 import java.util.Map;
 
@@ -13,7 +15,7 @@ public interface Mapper extends Comparable<Mapper>{
 
     boolean doMap(Field field);
 
-    void map2Json(Field field, Object value, Map<String,String> resultJson);
+    void map(Field field, Object value, Json resultJson);
 
     @Override
     default int compareTo(Mapper o) {
