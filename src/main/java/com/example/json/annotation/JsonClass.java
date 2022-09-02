@@ -1,5 +1,6 @@
 package com.example.json.annotation;
 
+import com.example.json.jsonadjuster.JsonAdjuster;
 import com.example.json.provider.PropertyNameProvider;
 
 import java.lang.annotation.ElementType;
@@ -18,17 +19,6 @@ public @interface JsonClass {
      */
     Class<? extends PropertyNameProvider> nameProvider() default PropertyNameProvider.class;
 
-    /**
-     * 忽略null值
-     */
-    boolean serializableIgnoreNull() default true;
-    /**
-     * null值调整为 Json中的null
-     */
-    boolean serializableNullAsJsonNull() default false;
 
-    /**
-     * null 调整成空串
-     */
-    boolean serializableNullAsEmptyString() default false;
+    Class<? extends JsonAdjuster> adjuster() default JsonAdjuster.class;
 }

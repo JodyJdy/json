@@ -14,7 +14,9 @@ public abstract class SuperFieldClassMapper implements Mapper{
 
     @Override
     public boolean doMap(Field field) {
-        Class<?> clazz = field.getType();
+        return doMap(field.getType());
+    }
+    public boolean doMap(Class<?> clazz) {
         if (sets.contains(clazz.hashCode())) {
             return true;
         }
@@ -28,6 +30,6 @@ public abstract class SuperFieldClassMapper implements Mapper{
     }
     @Override
     public int getOrder() {
-        return 2;
+        return SUPER_FIELD_CLASS;
     }
 }

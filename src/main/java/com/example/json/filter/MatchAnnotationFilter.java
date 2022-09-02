@@ -11,7 +11,7 @@ public abstract class MatchAnnotationFilter implements Filter {
 
     @Override
     public int getOrder() {
-        return 0;
+        return MATCH_ANNOTATION_FILTER;
     }
 
 }

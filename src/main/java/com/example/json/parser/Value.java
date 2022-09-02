@@ -81,5 +81,4 @@ public class Value {
     public boolean isNull(){
         return this.type  == ValueType.NULL;
     }
-
 }

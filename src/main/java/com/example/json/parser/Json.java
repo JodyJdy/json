@@ -4,6 +4,10 @@ import java.util.*;
 
 public class Json implements Map<String,Value>{
    private final Map<String,Value> map;
+
+   public Json(){
+      this.map = new LinkedHashMap<>();
+   }
    public Json(List<Pair> pairList) {
       this.map = new LinkedHashMap<>(pairList.size());
       pairList.forEach(pair->{

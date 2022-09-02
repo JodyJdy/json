@@ -3,6 +3,7 @@ package com.example.json;
 
 
 import com.example.json.json2obj.Json2Obj;
+import com.example.json.obj2json.Obj2json;
 import com.example.json.parser.JsonLexer;
 import com.example.json.parser.JsonParser;
 import com.example.json.type.ClassType;
@@ -23,7 +24,6 @@ public class JSON {
     public static JsonParser getJsonParser(String text) {
         return new JsonParser(new JsonLexer(text));
     }
-
     public static JsonParser getJsonParser(InputStream inputStream) {
         try {
             return new JsonParser(new JsonLexer(inputStream));
@@ -97,7 +97,6 @@ public class JSON {
     public static <T> T getArray(Class<T> arrayClass, JsonParser jsonParser, ClassType componentType) {
         return Json2Obj.getArray(arrayClass, jsonParser.parseValue(), componentType);
     }
-
     /**
      * @param contentClazz list元素类型
      * @param json         json数组, []
@@ -117,6 +116,9 @@ public class JSON {
 
     public static <T> List<T> getObjList(JsonParser jsonParser, Class<T> contentClazz) {
         return Json2Obj.getObjList(jsonParser.parseJsonArray(), contentClazz);
+    }
+    public static String toJson(Object obj){
+        return Obj2json.value2String(Obj2json.getValue(obj));
     }
 
 }

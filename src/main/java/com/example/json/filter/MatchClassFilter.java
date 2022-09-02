@@ -22,6 +22,6 @@ public abstract class MatchClassFilter implements Filter {
 
     @Override
     public int getOrder() {
-        return 1;
+        return MATCH_CLASS_FILTER;
     }
 }

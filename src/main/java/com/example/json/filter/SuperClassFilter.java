@@ -28,7 +28,7 @@ public abstract class SuperClassFilter implements Filter {
 
     @Override
     public int getOrder() {
-        return 2;
+        return SUPER_CLASS_FILTER;
     }
 
     private boolean isSuperClass(Class sonClass, Class fa) {

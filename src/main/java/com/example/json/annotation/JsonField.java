@@ -45,10 +45,6 @@ public @interface JsonField {
     boolean serializable() default true;
 
     /**
-     * 忽略null值
-     */
-    boolean serializableIgnoreNull() default true;
-    /**
      * null值调整为 Json中的null
      */
     boolean serializableNullAsJsonNull() default false;

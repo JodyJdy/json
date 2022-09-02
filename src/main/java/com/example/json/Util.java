@@ -81,4 +81,27 @@ public class Util {
         throw new RuntimeException("void type is not allowed");
     }
 
+    public static String getStringWithQuote(String init){
+        return String.format("\"%s\"",init);
+    }
+
+    /**
+     * 换行
+     */
+    public static final String NEW_LINE = "\r\n";
+    /**
+     * 制表符
+     */
+    public static final String TAB = "\t";
+
+    public static String getTabs(int num){
+        if(num == 0){
+            return "";
+        }
+        StringBuilder sb = new StringBuilder();
+        for(int i= 0 ;i<num;i++){
+            sb.append(TAB);
+        }
+        return sb.toString();
+    }
 }

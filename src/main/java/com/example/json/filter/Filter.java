@@ -20,9 +20,9 @@ public interface Filter extends Comparable<Filter> {
 
     /**
      * order是Filter作用的顺序，小的先执行
-     * MatchAnnotationFilter.order = 0
-     * MatchClassFilter.order = 1
-     * SuperClassFilter.order = 2
+     * MatchAnnotationFilter.order = MATCH_ANNOTATION_FILTER0
+     * MatchClassFilter.order = MATCH_CLASS_FILTER1
+     * SuperClassFilter.order = SUPER_CLASS_FILTER2
      */
     int getOrder();
 
@@ -32,4 +32,10 @@ public interface Filter extends Comparable<Filter> {
     default int compareTo(Filter o) {
         return getOrder() - o.getOrder();
     }
+
+
+    int MATCH_ANNOTATION_FILTER = 100;
+    int MATCH_CLASS_FILTER = 200;
+    int SUPER_CLASS_FILTER = 300;
+
 }
