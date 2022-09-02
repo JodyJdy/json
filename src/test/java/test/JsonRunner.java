@@ -1,25 +1,12 @@
 package test;
 
 import com.example.json.JSON;
-import com.example.json.parser.Json;
-import com.example.json.parser.JsonLexer;
-import com.example.json.parser.JsonParser;
-import com.example.json.parser.Value;
 import com.example.json.type.ClassType;
+import example.TestEnum3;
 
 import java.util.*;
 
 public class JsonRunner {
-    public static Json getJson(String text){
-        return new JsonParser(new JsonLexer(text)).parseJson();
-    }
-    public static List<Value> getValues(String text){
-        return new JsonParser(new JsonLexer(text)).parseJsonArray();
-    }
-    public static Value getValue(String text){
-        return new JsonParser(new JsonLexer(text)).parseValue();
-    }
-
     public static void main(String[] args)  {
         System.out.println(Arrays.deepToString(JSON.getArray(int[][].class,"[[1,2],[3,4]]")));
         JSON.getObjList("[[1,2],[3,4]]",int[].class).forEach(x->{
@@ -45,10 +32,10 @@ public class JsonRunner {
                 "\n" +
                 "}";
        ClassType<A<Integer,String,Integer>> classType = new ClassType<>(){};
+       //反序列化测试
         A a = JSON.getObj(A.class,json,classType);
+        //序列化测试
         A b = JSON.getObj(A.class,JSON.toJson(a),classType);
-
-
         System.out.println();
 
     }
@@ -72,6 +59,7 @@ public class JsonRunner {
         HashSet<C>[] xx;
         Map<C,D> mm;
         LinkedHashMap<LinkedList<C>,D> vv;
+        TestEnum3 testEnum3;
     }
 
 

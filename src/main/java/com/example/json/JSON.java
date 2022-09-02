@@ -17,8 +17,13 @@ import java.util.List;
 /**
  * 反序列化时，可通过 自定义Filter扩展功能；可以将自定义的Filter添加到Filters:filterChain中发挥作用
  * 或者使用JsonField.filter注解指定反序列化某个Field使用的Filter;
- * Field.name与 Json.key的转换关系，可以通过 JsonField注解指定，使用JsonField.name定义Field.name对应的Json.key
- * 或者使用JsonField.nameProvider定义转换类完成转换
+ *
+ * 序列化时，通过自定义Mapper扩展功能； 加入MapperChain，或者在JsonField.mapper中指定Mapper
+ *
+ * 还可以自定义 注解，添加处理注解用的Filter/Mapper到 FilterChain/MapperChain中
+ *
+ *   Field.name与 Json.key的转换关系，可以通过 JsonField注解指定，使用JsonField.name定义Field.name对应的Json.key
+ *   或者使用JsonField.nameProvider定义转换类完成转换
  */
 public class JSON {
     public static JsonParser getJsonParser(String text) {
