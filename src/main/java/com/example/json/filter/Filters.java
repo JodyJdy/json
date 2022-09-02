@@ -21,12 +21,13 @@ public class Filters {
         filterChain.add(new JsonFieldMatchAnnotationFilter());
         filterChain.add(new JsonEnumCreatorMatchAnnotationFilter());
         filterChain.add(new BasicTypeMatchClassFilter());
-        filterChain.add(new ListSuperClassFilter());
-        filterChain.add(new SetSuperClassFilter());
-        filterChain.add(new MapSuperClassFilter());
         filterChain.add(new LinkedListMatchClassFilter());
         filterChain.add(new LinkedHashMapMatchClassFilter());
         filterChain.add(new DateMatchClassFilter());
+        filterChain.add(new ListSuperClassFilter());
+        filterChain.add(new SetSuperClassFilter());
+        filterChain.add(new MapSuperClassFilter());
+        filterChain.add(new EnumSuperClassFilter());
     }
 
     static {

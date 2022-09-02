@@ -15,12 +15,13 @@ public class Mappers {
      */
     private static final List<Mapper> mapperChain = new ArrayList<>();
 
-
     static {
         mapperChain.add(new JsonFieldMatchFieldAnnotationMapper());
         mapperChain.add(new BasicTypeMatchFieldClassMapper());
+        mapperChain.add(new JsonCreatorClassMapper());
         mapperChain.add(new DateMatchFieldClassMapper());
         mapperChain.add(new ListSuperFieldClassMapper());
+        mapperChain.add(new EnumSuperFieldClassMapper());
         mapperChain.add(new MapSuperFieldClassMapper());
         mapperChain.add(new SetSuperFieldClassMapper());
     }

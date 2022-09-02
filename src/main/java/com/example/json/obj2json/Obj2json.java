@@ -8,15 +8,26 @@ import com.example.json.parser.Json;
 import com.example.json.parser.Value;
 import com.example.json.provider.PropertyNameProvider;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 public class Obj2json {
     public static Value getValue(Object obj) {
         if(obj == null){
             return null;
+        }
+        if(obj.getClass().isArray()){
+            List<Value> valueList = new ArrayList<>();
+            int len = Array.getLength(obj);
+            for(int i=0;i<len;i++){
+                valueList.add(getValue(Array.get(obj,i)));
+            }
+            return new Value(valueList);
         }
         Mapper mapper = Mappers.doMap(obj);
         if (mapper != null) {

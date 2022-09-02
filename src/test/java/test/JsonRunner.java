@@ -46,7 +46,10 @@ public class JsonRunner {
                 "}";
        ClassType<A<Integer,String,Integer>> classType = new ClassType<>(){};
         A a = JSON.getObj(A.class,json,classType);
-        System.out.println(a);
+        A b = JSON.getObj(A.class,JSON.toJson(a),classType);
+
+
+        System.out.println();
 
     }
     public static class A<C,D,E>{
