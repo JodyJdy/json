@@ -26,14 +26,16 @@ public class BasicTypeMatchClassFilter extends MatchClassFilter {
 
     @SuppressWarnings("unchecked")
     private static <T> T getPrimitiveValue(Class<T> type, Value value) {
+        Number num = value.getNum();
         if (Integer.class.equals(type) || int.class.equals(type)) {
-            return (T) Integer.valueOf(value.getL().intValue());
+            return (T)Integer.valueOf(num.intValue());
         }
+
         if (Boolean.class.equals(type) || boolean.class.equals(type)) {
             return (T) value.getB();
         }
         if (Long.class.equals(type) || long.class.equals(type)) {
-            return (T) value.getL();
+            return (T) Long.valueOf(num.longValue());
         }
         if (type.equals(String.class)) {
             return (T) value.getV();
@@ -42,16 +44,16 @@ public class BasicTypeMatchClassFilter extends MatchClassFilter {
             return (T) Character.valueOf(value.getV().charAt(0));
         }
         if (float.class.equals(type) || Float.class.equals(type)) {
-            return (T) Float.valueOf(value.getD().floatValue());
+            return (T) Float.valueOf(num.floatValue());
         }
         if (Double.class.equals(type) || double.class.equals(type)) {
-            return (T) value.getD();
+            return (T) Double.valueOf(num.doubleValue());
         }
         if (short.class.equals(type) || Short.class.equals(type)) {
-            return (T) Short.valueOf(value.getL().shortValue());
+            return (T) Short.valueOf(num.shortValue());
         }
         if (byte.class.equals(type) || Byte.class.equals(type)) {
-            return (T) Byte.valueOf(value.getL().byteValue());
+            return (T) Byte.valueOf(num.byteValue());
         }
         throw new RuntimeException("void type is not allowed");
     }

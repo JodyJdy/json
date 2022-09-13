@@ -82,11 +82,8 @@ public class Obj2json {
         if(value.getB() != null){
             return String.valueOf(value.getB());
         }
-        if(value.getL() != null){
-            return String.valueOf(value.getL());
-        }
-        if(value.getD() != null){
-            return String.valueOf(value.getD());
+        if(value.getNum() != null){
+            return String.valueOf(value.getNum());
         }
         if(value.getV()!=null){
             return  value.getV();

@@ -20,8 +20,8 @@ public class DateMatchClassFilter extends MatchClassFilter {
         if (value == null || value.isNull()) {
             return null;
         }
-        if (value.getL() != null) {
-            return new Date(value.getL());
+        if (value.getNum() != null) {
+            return new Date(value.getNum().longValue());
         }
         if (value.getV() != null) {
             try {

@@ -6,8 +6,7 @@ public class Value {
 
     int type;
     Boolean b;
-    Long  l;
-    Double d;
+    Number num;
     String v;
     Json j;
     List<Value> array;
@@ -21,9 +20,9 @@ public class Value {
         this.type = ValueType.NULL;
     }
 
-    public Value(Double d) {
-        this.d = d;
-        this.type = ValueType.DOUBLE;
+    public Value(Number num) {
+        this.num = num;
+        this.type = ValueType.NUM;
     }
 
     public Value(String v) {
@@ -31,10 +30,6 @@ public class Value {
         this.type = ValueType.STRING;
     }
 
-    public Value(Long l) {
-        this.l = l;
-        this.type = ValueType.LONG;
-    }
 
     public Value(Boolean b) {
         this.b = b;
@@ -59,14 +54,6 @@ public class Value {
         return b;
     }
 
-    public Long getL() {
-        return l;
-    }
-
-    public Double getD() {
-        return d;
-    }
-
     public String getV() {
         return v;
     }
@@ -80,5 +67,9 @@ public class Value {
     }
     public boolean isNull(){
         return this.type  == ValueType.NULL;
+    }
+
+    public Number getNum() {
+        return num;
     }
 }

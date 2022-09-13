@@ -23,10 +23,10 @@ public class AtomicNumTypeMatchClassFilter extends MatchClassFilter {
             return new AtomicBoolean(value.getB());
         }
         if (clazz.equals(AtomicInteger.class)) {
-            return new AtomicInteger(value.getL().intValue());
+            return new AtomicInteger(value.getNum().intValue());
         }
         if (clazz.equals(AtomicLong.class)) {
-            return new AtomicLong(value.getL());
+            return new AtomicLong(value.getNum().intValue());
         }
         return null;
     }

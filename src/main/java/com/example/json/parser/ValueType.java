@@ -5,9 +5,8 @@ public interface ValueType {
 
     int NULL =0;
     int BOOL = 1;
-    int LONG  =2;
-    int DOUBLE =3;
-    int STRING =4;
-    int JSON =5;
-    int ARRAY = 6;
+    int NUM =2;
+    int STRING =3;
+    int JSON =4;
+    int ARRAY = 5;
 }
