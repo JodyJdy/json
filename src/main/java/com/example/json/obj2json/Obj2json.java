@@ -11,10 +11,7 @@ import com.example.json.provider.PropertyNameProvider;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Obj2json {
     public static Value getValue(Object obj) {
@@ -39,7 +36,15 @@ public class Obj2json {
         }
         Class<?> clazz = obj.getClass();
         Json json = new Json();
-        for (Field field : clazz.getDeclaredFields()) {
+
+        //获取所有当前类以及父类的Field
+        List<Field> fieldList = new ArrayList<>(16);
+        while (clazz != null){
+            Field[] fields = clazz.getDeclaredFields();
+            fieldList.addAll(Arrays.asList(fields));
+            clazz = clazz.getSuperclass();
+        }
+        for (Field field : fieldList) {
             int modifier = field.getModifiers();
             field.setAccessible(true);
             //默认过滤加了transient关键字的内容
