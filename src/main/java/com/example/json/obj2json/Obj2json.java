@@ -38,12 +38,7 @@ public class Obj2json {
         Json json = new Json();
 
         //获取所有当前类以及父类的Field
-        List<Field> fieldList = new ArrayList<>(16);
-        while (clazz != null){
-            Field[] fields = clazz.getDeclaredFields();
-            fieldList.addAll(Arrays.asList(fields));
-            clazz = clazz.getSuperclass();
-        }
+        List<Field> fieldList = Util.getAllFields(clazz);
         for (Field field : fieldList) {
             int modifier = field.getModifiers();
             field.setAccessible(true);

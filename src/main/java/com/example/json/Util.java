@@ -2,6 +2,9 @@ package com.example.json;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Util {
     /**
@@ -17,6 +20,17 @@ public class Util {
                 || Long.class.equals(clazz) || Float.class.equals(clazz) || Double.class.equals(clazz) || Character.class.equals(clazz)
                 || Boolean.class.equals(clazz) || String.class.equals(clazz);
 
+    }
+
+
+    public static List<Field> getAllFields(Class clazz){
+        List<Field> fieldList = new ArrayList<>(16);
+        while (clazz != null){
+            Field[] fields = clazz.getDeclaredFields();
+            fieldList.addAll(Arrays.asList(fields));
+            clazz = clazz.getSuperclass();
+        }
+        return fieldList;
     }
 
 

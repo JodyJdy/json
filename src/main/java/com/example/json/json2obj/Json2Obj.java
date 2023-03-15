@@ -109,8 +109,8 @@ public class Json2Obj {
             constructor.setAccessible(true);
             T instance = constructor.newInstance();
             constructor.setAccessible(false);
-            Field[] fields = clazz.getDeclaredFields();
-            for (Field field : fields) {
+            List<Field> fieldList = Util.getAllFields(clazz);
+            for (Field field : fieldList) {
                 if (isFinalOrStatic(field)) {
                     continue;
                 }
