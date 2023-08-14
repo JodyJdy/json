@@ -69,7 +69,7 @@ public class Json2Obj {
      * 通过Value对象，不用要求传入的文本一定是 {}的json
      */
     public static <T> T getObj(Class<T> clazz, Value value, ClassType classType) {
-        FieldType fieldType = TypeHelper.resolveFieldType(clazz);
+        FieldType fieldType = TypeHelper.trans2FieldType(classType);
         fieldType = TypeHelper.specificGeneric(fieldType,classType);
         //如果要转换成的类，可以被Filter处理，使用Filter处理
         Filter filter = Filters.doFilter(clazz);
@@ -80,7 +80,7 @@ public class Json2Obj {
     }
     public static <T> T getObj(Class<T> clazz, Value value) {
         ClassType defaultClassType = getDefaultClassType(clazz);
-        FieldType fieldType = TypeHelper.resolveFieldType(clazz);
+        FieldType fieldType = TypeHelper.trans2FieldType(defaultClassType);
         //如果要转换成的类，可以被Filter处理，使用Filter处理
         Filter filter = Filters.doFilter(clazz);
         if (Objects.nonNull(filter)) {

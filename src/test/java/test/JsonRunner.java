@@ -7,13 +7,14 @@ import example.TestEnum3;
 import java.util.*;
 
 public class JsonRunner {
-    public static void main(String[] args)  {
-        System.out.println(Arrays.deepToString(JSON.getArray(int[][].class,"[[1,2],[3,4]]")));
-        JSON.getObjList("[[1,2],[3,4]]",int[].class).forEach(x->{
-           System.out.println( Arrays.toString(x));;
-       });
+    public static void main(String[] args) {
+        System.out.println(Arrays.deepToString(JSON.getArray(int[][].class, "[[1,2],[3,4]]")));
+        JSON.getObjList("[[1,2],[3,4]]", int[].class).forEach(x -> {
+            System.out.println(Arrays.toString(x));
+            ;
+        });
         //复杂结构测试
-        String  json = "{\n" +
+        String json = "{\n" +
                 "\n" +
                 "\"i\":1,\n" +
                 "\"is\":[1,2,3,4],\n" +
@@ -31,12 +32,23 @@ public class JsonRunner {
                 "\n" +
                 "\n" +
                 "}";
-       ClassType<A<Integer,String,Integer>> classType = new ClassType<>(){};
-       //反序列化测试
-        A a = JSON.getObj(A.class,json,classType);
-        //序列化测试
-        A b = JSON.getObj(A.class,JSON.toJson(a),classType);
+//       ClassType<A<Integer,String,Integer>> classType = new ClassType<>(){};
+////       //反序列化测试
+//        A a = JSON.getObj(A.class,json,classType);
+//        //序列化测试
+//        A b = JSON.getObj(A.class,JSON.toJson(a),classType);
+
+        //language=JSON
+        String json2 = "{\n" +
+                "  \"a\": \"void\",\n" +
+                "  \"sldf\":\"sldfj\"\n" +
+                "  \n" +
+                "}";
+        ClassType<Map<String, String>> classType = new ClassType<>() {
+        };
+        Map<String, String> m = JSON.getObj(Map.class, json2, classType);
         System.out.println();
+
 
     }
     public static class A<C,D,E>{

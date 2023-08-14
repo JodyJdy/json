@@ -29,14 +29,26 @@ public class ClassType<T> {
         if (superClass.getClass().isEnum()) {
             throw new RuntimeException("枚举类型无泛型类型，不允许使用无参构造函数创建ClasssType对象");
         }
-        //获取T的类型
-        ParameterizedType argType = (ParameterizedType) ((ParameterizedType) superClass).getActualTypeArguments()[0];
-        Class<?> rawType = (Class<?>) argType.getRawType();
-        this.rawType = rawType;
-        Type[] argTypes = argType.getActualTypeArguments();
-        TypeVariable[] typeVariables = rawType.getTypeParameters();
-        for (int i = 0; i < argTypes.length; i++) {
-            genericTypeMap.put(typeVariables[i].getName(), TypeHelper.resolveFieldType(argTypes[i]));
+        /// 实际要处理的类型
+        Type processType = ((ParameterizedType) superClass).getActualTypeArguments()[0];
+        // 例如 Map<String,Integer>， 含有泛型参数
+        if (processType instanceof ParameterizedType) {
+            ParameterizedType argType = (ParameterizedType) processType;
+            Class<?> rawType = (Class<?>) argType.getRawType();
+            this.rawType = rawType;
+            Type[] argTypes = argType.getActualTypeArguments();
+            TypeVariable[] typeVariables = rawType.getTypeParameters();
+            for (int i = 0; i < argTypes.length; i++) {
+                genericTypeMap.put(typeVariables[i].getName(), TypeHelper.resolveFieldType(argTypes[i]));
+            }
+        } else if(processType instanceof Class){
+            // 例如 Map.class 不含泛型参数
+            Class argClass = (Class) processType;
+            this.rawType = argClass;
+            TypeVariable[] typeVariables = argClass.getTypeParameters();
+            for (TypeVariable typeVariable : typeVariables) {
+                genericTypeMap.put(typeVariable.getName(), TypeHelper.resolveFieldType(typeVariable.getBounds()[0]));
+            }
         }
     }
 
